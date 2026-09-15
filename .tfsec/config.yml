@@ -1,0 +1,11 @@
+# Documented exception, not an oversight.
+#
+# Lab 2.3 intentionally uses AWS-managed (SSE-S3/AES256) encryption rather
+# than a customer-managed KMS key, to keep that lab's scope focused on the
+# baseline S3 controls. KMS-based encryption is introduced in a later lab.
+# Our own Conftest SC-28 policy already requires an explicit encryption
+# configuration to exist on every bucket; this exclusion only relaxes
+# tfsec's stricter "must be customer-managed KMS" check for this known,
+# accepted, and documented case.
+exclude:
+  - aws-s3-encryption-customer-key
