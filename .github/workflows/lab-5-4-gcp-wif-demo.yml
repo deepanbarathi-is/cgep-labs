@@ -1,0 +1,21 @@
+name: Lab 5.4 - GCP WIF demo
+
+on:
+  workflow_dispatch:
+
+permissions:
+  id-token: write   # required to mint the OIDC token
+  contents: read
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/auth@v2
+        with:
+          # terraform output -raw workload_identity_provider
+          workload_identity_provider: projects/240307594799/locations/global/workloadIdentityPools/github-actions/providers/github
+          # terraform output -raw wif_service_account_email
+          service_account: cgep-grc-gate-sa@tough-talent-255206.iam.gserviceaccount.com
+
+      - run: gcloud storage ls
