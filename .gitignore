@@ -10,3 +10,5 @@ crash.log
 
 # OS noise
 .DS_Store
+.venv/
+.trestle-work/
